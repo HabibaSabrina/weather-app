@@ -6,6 +6,7 @@ const Weather = () => {
 
     const handleWeather = event => {
         event.preventDefault();
+        // form values
         const form = event.target;
         const city = form.city.value;
         const degree = form.degree.value;
