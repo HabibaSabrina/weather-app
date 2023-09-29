@@ -10,7 +10,7 @@ const Weather = () => {
         const city = form.city.value;
         const degree = form.degree.value;
         console.log(degree)
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=1a43934ad00f34a319a5d292f5bcb2c1&units=${degree}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${import.meta.env.API_KEY}&units=${degree}`)
             .then(res => res.json())
             .then(data => setWeather(data))
 
