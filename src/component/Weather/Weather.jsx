@@ -3,6 +3,7 @@ import "./style.css"
 import WeatherDetails from '../WeatherDetails/WeatherDetails';
 const Weather = () => {
     const [weather, setWeather] = useState([])
+    const [deg, setDeg] = useState([])
 
     const handleWeather = event => {
         event.preventDefault();
@@ -10,8 +11,8 @@ const Weather = () => {
         const form = event.target;
         const city = form.city.value;
         const degree = form.degree.value;
-        console.log(degree)
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${import.meta.env.API_KEY}&units=${degree}`)
+        setDeg(degree)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${import.meta.env.API_KEY}=${degree}`)
             .then(res => res.json())
             .then(data => setWeather(data))
 
@@ -32,7 +33,7 @@ const Weather = () => {
                     <button className='bg-orange-700 text-white p-3 px-10 rounded-xl font-semibold'>Get Weather</button>
                 </div>
             </form>
-            {weather ? <WeatherDetails weather={weather}></WeatherDetails> : <div><h1>no data</h1></div>}
+            {weather ? <WeatherDetails weather={weather} deg={deg}></WeatherDetails> : <div><h1>no data</h1></div>}
             
 
         </div>

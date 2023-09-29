@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WeatherDetails = ({weather}) => {
+const WeatherDetails = ({weather, deg}) => {
     
   if (!weather) {
     return <div className='text-white md:w-1/2 text-xl bg-black p-10 bg-opacity-70 mx-auto my-20 text-center'>No weather data available.</div>;
@@ -18,6 +18,7 @@ const WeatherDetails = ({weather}) => {
 
  
   const temperature = weather.main.temp;
+  console.log(temperature)
   const humidity = weather.main.humidity;
   const speed = weather.wind.speed;
   const description = weather.weather[0].description
@@ -30,7 +31,9 @@ const WeatherDetails = ({weather}) => {
             <tr>
               <td className='pb-5'>Temperature:</td>
               
-              <td className='pb-5'>{temperature} &deg;C</td>
+              {
+                deg == "metric" ? <td className='pb-5'>{temperature}&deg;C</td> : <td className='pb-5'>{temperature}&deg;F</td>
+              }
             </tr>
             <tr>
               <td className='pb-5'>Humidity:</td>
